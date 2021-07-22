@@ -7,5 +7,11 @@ git congfig --list
 git add.
 git status
 git branch
-git comit -m "aaaaaaaaaaaaa"
+git commit -m "aaaaaaaaaaaaa"
 git context branch "aaaaaaa"
+
+git log
+git --help
+git pull
+git push
+git fetch
