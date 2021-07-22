@@ -15,3 +15,11 @@ git --help
 git pull
 git push
 git fetch
+
+git checkout #unique id of commit stage#
+git checkout master
+
+git branch branch_name
+git checkout -b new_branch_name //short cut command to create branch and switch to the created one
+git checkout -d branch_name  //command to delete branch
+git merge branch_name_to_merge_with //merge to branches 
