@@ -1,0 +1,11 @@
+intiating git
+git init
+git config --global user.name "kane"
+git config --global user.email "---"
+git congfig --list
+
+git add.
+git status
+git branch
+git comit -m "aaaaaaaaaaaaa"
+git context branch "aaaaaaa"
