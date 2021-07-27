@@ -52,7 +52,11 @@ public class DeliveryRestController {
 		return service.findByOrderId(id);
 	}
 	
-	@GetMapping("/getAll/{status}")
+	/**
+	 *  /delivery/getAll/byStatus/{status}
+	 * 
+	 */
+	@GetMapping("/getAll/byStatus/{status}")
 	public List<DeliveryDetails> fetchAllByStatus(@PathVariable("status") String status){
 		return service.findAllDetailsByStatus(status);
 	}

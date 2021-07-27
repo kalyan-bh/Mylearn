@@ -51,14 +51,7 @@ public class DeliveryServiceImpl implements IDeliveryService {
 		return new Delivery();
 	}
 
-	public Delivery findByDeliveryId(Long id) {
-		Optional<Delivery> optional = deliveryRepo.findById(id);
-		if (!optional.isPresent()) {
-			throw new DeliveryNotFoundException("Delivery Details not found for id " + id);
-		}
-		return optional.get();
-	}
-
+	
 	/**
 	 * changing delivery status
 	 */
@@ -70,15 +63,9 @@ public class DeliveryServiceImpl implements IDeliveryService {
 		return deliveryUtil.toDetails(delivery);
 	}
 	
-	public Delivery fetchDeliveryByOrderId(Long orderId) {
-		boolean exist=deliveryRepo.existsByOrderId(orderId);
-		if(!exist) {
-			throw new DeliveryNotFoundException("Delivery not found for order id "+orderId);
-		}
-		Delivery delivery=deliveryRepo.findDeliveryByOrderId(orderId);
-		return delivery;
-	}
-
+	/**
+	 * get delivery details by order id
+	 */
 	@Override
 	public DeliveryDetails findByOrderId(Long orderId) {
 		boolean exist=deliveryRepo.existsByOrderId(orderId);
@@ -88,11 +75,31 @@ public class DeliveryServiceImpl implements IDeliveryService {
 		Delivery delivery=deliveryRepo.findDeliveryByOrderId(orderId);
 		return deliveryUtil.toDetails(delivery);
 	}
-
+	
+	/**
+	 * find the list of delivery details by delivery status
+	 */
 	@Override
 	public List<DeliveryDetails> findAllDetailsByStatus(@NotNull String status) {
 		List<Delivery> details=deliveryRepo.findAllByDeliveryStatus(deliveryUtil.toDeliveryStatus(status));
 		return deliveryUtil.toDetailsList(details);
 	}
 	
+	public Delivery fetchDeliveryByOrderId(Long orderId) {
+		boolean exist=deliveryRepo.existsByOrderId(orderId);
+		if(!exist) {
+			throw new DeliveryNotFoundException("Delivery not found for order id "+orderId);
+		}
+		Delivery delivery=deliveryRepo.findDeliveryByOrderId(orderId);
+		return delivery;
+	}
+	
+	public Delivery findById(Long id) {
+		Optional<Delivery> optional = deliveryRepo.findById(id);
+		if (!optional.isPresent()) {
+			throw new DeliveryNotFoundException("Delivery Details not found for id " + id);
+		}
+		return optional.get();
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.trainingapps.stockapp.deliveryms.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,19 +29,25 @@ public class DeliveryUtil {
 	public DeliveryDetails toDetails(Delivery delivery) {
 		DeliveryDetails details=new DeliveryDetails();
 		details.setDeliveryId(delivery.getDeliveryId());
-		DateConverter dc=new DateConverter();
+		DateConverter converter=new DateConverter();
 		if(delivery.getDeliveredDate()==null) {
 			details.setDeliveredDate(null);
 		}
 		else {
-			details.setDeliveredDate(dc.toText(delivery.getDeliveredDate()));
+			details.setDeliveredDate(converter.toText(delivery.getDeliveredDate()));
 		}
 		details.setOrderId(delivery.getOrderId());
 		details.setDeliveryStatus(delivery.getDeliveryStatus().name());
 		return details;
 	}
 	
-	public List<DeliveryDetails> toDetailsList(Collection<Delivery> details){
-		return details.stream().map(n->toDetails(n)).collect(Collectors.toList());
+	public List<DeliveryDetails> toDetailsList(Collection<Delivery> detailsList){
+		return detailsList.stream().map(n->toDetails(n)).collect(Collectors.toList());
+	  /*List<DeliveryDetails> desired=new ArrayList<>();
+		for(Delivery delivery:detailsList) {
+			DeliveryDetails details=toDetails(delivery);
+			desired.add(details);
+		}
+		return desired;*/
 	}
 }
