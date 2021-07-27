@@ -40,18 +40,13 @@ public class DeliveryServiceImpl implements IDeliveryService {
 	 */
 	@Override
 	public DeliveryDetails add(AddDeliveryRequest request) {
-		Delivery delivery = newDelivery();//new Delivery();
+		Delivery delivery = newDelivery();
 		delivery.setOrderId(request.getOrderId());
 		delivery.setDeliveryStatus(DeliveryStatus.NOT_DISPATCHED);
 		delivery = deliveryRepo.save(delivery);
 		return deliveryUtil.toDetails(delivery);
 	}
-	
-	public Delivery newDelivery() {
-		return new Delivery();
-	}
 
-	
 	/**
 	 * changing delivery status
 	 */
@@ -62,44 +57,40 @@ public class DeliveryServiceImpl implements IDeliveryService {
 		delivery = deliveryRepo.save(delivery);
 		return deliveryUtil.toDetails(delivery);
 	}
-	
+
 	/**
 	 * get delivery details by order id
 	 */
 	@Override
 	public DeliveryDetails findByOrderId(Long orderId) {
-		boolean exist=deliveryRepo.existsByOrderId(orderId);
-		if(!exist) {
-			throw new DeliveryNotFoundException("Delivery not found for order id "+orderId);
+		boolean exist = deliveryRepo.existsByOrderId(orderId);
+		if (!exist) {
+			throw new DeliveryNotFoundException("Delivery not found for order id " + orderId);
 		}
-		Delivery delivery=deliveryRepo.findDeliveryByOrderId(orderId);
+		Delivery delivery = deliveryRepo.findDeliveryByOrderId(orderId);
 		return deliveryUtil.toDetails(delivery);
 	}
-	
+
 	/**
 	 * find the list of delivery details by delivery status
 	 */
 	@Override
 	public List<DeliveryDetails> findAllDetailsByStatus(@NotNull String status) {
-		List<Delivery> details=deliveryRepo.findAllByDeliveryStatus(deliveryUtil.toDeliveryStatus(status));
+		List<Delivery> details = deliveryRepo.findAllByDeliveryStatus(deliveryUtil.toDeliveryStatus(status));
 		return deliveryUtil.toDetailsList(details);
 	}
-	
-	public Delivery fetchDeliveryByOrderId(Long orderId) {
-		boolean exist=deliveryRepo.existsByOrderId(orderId);
-		if(!exist) {
-			throw new DeliveryNotFoundException("Delivery not found for order id "+orderId);
-		}
-		Delivery delivery=deliveryRepo.findDeliveryByOrderId(orderId);
-		return delivery;
+
+	public Delivery newDelivery() {
+		return new Delivery();
 	}
-	
-	public Delivery findById(Long id) {
-		Optional<Delivery> optional = deliveryRepo.findById(id);
-		if (!optional.isPresent()) {
-			throw new DeliveryNotFoundException("Delivery Details not found for id " + id);
+
+	public Delivery fetchDeliveryByOrderId(Long orderId) {
+		boolean exist = deliveryRepo.existsByOrderId(orderId);
+		if (!exist) {
+			throw new DeliveryNotFoundException("Delivery not found for order id " + orderId);
 		}
-		return optional.get();
+		Delivery delivery = deliveryRepo.findDeliveryByOrderId(orderId);
+		return delivery;
 	}
 
 }

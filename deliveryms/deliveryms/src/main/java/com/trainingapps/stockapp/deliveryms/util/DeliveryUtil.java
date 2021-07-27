@@ -14,40 +14,41 @@ import com.trainingapps.stockapp.deliveryms.exceptions.InvalidStatusException;
 
 @Component
 public class DeliveryUtil {
-	
+
 	public DeliveryStatus toDeliveryStatus(String statusText) {
-		DeliveryStatus[] deliverystatus=DeliveryStatus.values();
-		for(DeliveryStatus status:deliverystatus) {
-			String text=status.name();
-			if(text.equalsIgnoreCase(statusText)) {
+		DeliveryStatus[] deliverystatus = DeliveryStatus.values();
+		for (DeliveryStatus status : deliverystatus) {
+			String text = status.name();
+			if (text.equalsIgnoreCase(statusText)) {
 				return status;
 			}
 		}
-		throw new InvalidStatusException(statusText+" Invalid Delivery status");
+		throw new InvalidStatusException(statusText + " Invalid Delivery status");
 	}
-	
+
 	public DeliveryDetails toDetails(Delivery delivery) {
-		DeliveryDetails details=new DeliveryDetails();
+		DeliveryDetails details = new DeliveryDetails();
 		details.setDeliveryId(delivery.getDeliveryId());
-		DateConverter converter=new DateConverter();
-		if(delivery.getDeliveredDate()==null) {
+		DateConverter converter = new DateConverter();
+		if (delivery.getDeliveredDate() == null) {
 			details.setDeliveredDate(null);
-		}
-		else {
+		} else {
 			details.setDeliveredDate(converter.toText(delivery.getDeliveredDate()));
 		}
 		details.setOrderId(delivery.getOrderId());
 		details.setDeliveryStatus(delivery.getDeliveryStatus().name());
 		return details;
 	}
-	
-	public List<DeliveryDetails> toDetailsList(Collection<Delivery> detailsList){
-		return detailsList.stream().map(n->toDetails(n)).collect(Collectors.toList());
-	  /*List<DeliveryDetails> desired=new ArrayList<>();
-		for(Delivery delivery:detailsList) {
-			DeliveryDetails details=toDetails(delivery);
-			desired.add(details);
-		}
-		return desired;*/
+
+	public List<DeliveryDetails> toDetailsList(Collection<Delivery> detailsList) {
+		return detailsList.stream().map(n -> toDetails(n)).collect(Collectors.toList());
+		/*
+		 * List<DeliveryDetails> desired=new ArrayList<>(); 
+		 * for(Delivery delivery:detailsList) { 
+		 * 	DeliveryDetails details=toDetails(delivery);
+		 * 	desired.add(details); 
+		 *  }
+		 *  return desired;
+		 */
 	}
 }

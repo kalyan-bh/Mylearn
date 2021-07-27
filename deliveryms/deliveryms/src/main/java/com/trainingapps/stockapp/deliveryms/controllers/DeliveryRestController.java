@@ -21,43 +21,43 @@ import com.trainingapps.stockapp.deliveryms.service.IDeliveryService;
 @RequestMapping("/delivery")
 @RestController
 public class DeliveryRestController {
-	
+
 	@Autowired
 	private IDeliveryService service;
-	
+
 	/**
-	 *  /delivery/add
+	 * /delivery/add
 	 */
 	@ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/add")
+	@PostMapping("/add")
 	public DeliveryDetails addDelivery(@RequestBody AddDeliveryRequest request) {
 		return service.add(request);
 	}
-	
+
 	/**
-	 *  /delivery/update/status
-	 *  
+	 * /delivery/update/status
+	 * 
 	 */
 	@PutMapping("/update/status")
 	public DeliveryDetails updateStatus(@RequestBody ChangeDeliveryStatus request) {
 		return service.changeDeliveryStatus(request);
 	}
-	
+
 	/**
-	 *  /delivery/get/details/byid/1
+	 * /delivery/get/details/byid/1
 	 * 
 	 */
 	@GetMapping("/get/details/byid/{id}")
 	public DeliveryDetails fetchDetailsById(@PathVariable("id") Long id) {
 		return service.findByOrderId(id);
 	}
-	
+
 	/**
-	 *  /delivery/getAll/byStatus/{status}
+	 * /delivery/getAll/byStatus/{status}
 	 * 
 	 */
 	@GetMapping("/getAll/byStatus/{status}")
-	public List<DeliveryDetails> fetchAllByStatus(@PathVariable("status") String status){
+	public List<DeliveryDetails> fetchAllByStatus(@PathVariable("status") String status) {
 		return service.findAllDetailsByStatus(status);
 	}
 }
