@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.trainingapps.stockapp.deliveryms.exceptions.DeliveryNotFoundException;
 import com.trainingapps.stockapp.deliveryms.exceptions.InvalidStatusException;
 
+/**
+ * Centralized Exception Handler
+ * @author saika
+ *
+ */
 @RestControllerAdvice
 public class CentralizedExceptionHandler {
 	
