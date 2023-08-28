@@ -4,7 +4,10 @@ git config --global user.name "kane" / old user.name "kalyan"
 git config --global user.email "---"
 git congfig --list
 
-git add.
+git add . // add changes to the staging area
+git restore --stage . // back to the unstage
+git add --all // add changes to staging area
+git reset // back to unstage
 git status  ------>//to see any new changes
 git branch //get the branch name
 git commit -m "aaaaaaaaaaaaa"

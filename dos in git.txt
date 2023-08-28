@@ -3,3 +3,10 @@ list out
 how to connect with git with git hub
 how to connect local repository with remote repository
 how to work with git and git with devops
+
+know difference between
+
+git add .
+git add --all
+git add <path>
+git add <filename>
