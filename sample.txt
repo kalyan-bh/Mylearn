@@ -1,6 +1,6 @@
 intiating git
 git init
-git config --global user.name "kane"
+git config --global user.name "kane" / old user.name "kalyan"
 git config --global user.email "---"
 git congfig --list
 
@@ -11,6 +11,8 @@ git commit -m "aaaaaaaaaaaaa"
 git context branch "aaaaaaa"
 
 git log  ----->//history of every commit
+to get rid of log press "q"
+
 git --help
 git pull   //pull the changes from remote repository.
 git push  //used to push changes from local to remote repository. 
