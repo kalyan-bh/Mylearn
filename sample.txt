@@ -5,21 +5,27 @@ git config --global user.email "---"
 git congfig --list
 
 git add.
-git status
-git branch
+git status  ------>//to see any new changes
+git branch //get the branch name
 git commit -m "aaaaaaaaaaaaa"
 git context branch "aaaaaaa"
 
-git log
+git log  ----->//history of every commit
 git --help
-git pull
-git push
-git fetch
+git pull   //pull the changes from remote repository.
+git push  //used to push changes from local to remote repository. 
+git fetch 
 
-git checkout #unique id of commit stage#
-git checkout master
+git checkout #unique id of commit stage#  ---->// to go to the previous changes
+git checkout master  //to go to the master branch
 
-git branch branch_name
+git branch branch_name  //also creates new branch
+git checkout new_branch_name //just creates new branch 
 git checkout -b new_branch_name //short cut command to create branch and switch to the created one
+
+
+git branch --all // to get all the branches list
 git checkout -d branch_name  //command to delete branch
 git merge branch_name_to_merge_with //merge to branches 
+
+back to git 28/8/23
