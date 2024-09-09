@@ -18,7 +18,9 @@ to get rid of log press "q"
 
 git --help
 git pull   //pull the changes from remote repository.
-git push  //used to push changes from local to remote repository. 
+git remote add origin remote_repo_link
+git push  
+git push -u origin branch_name //used to push changes from local to remote repository. 
 git fetch 
 
 git checkout #unique id of commit stage#  ---->// to go to the previous changes
@@ -31,6 +33,6 @@ git checkout -b new_branch_name //short cut command to create branch and switch 
 
 git branch --all // to get all the branches list
 git checkout -d branch_name  //command to delete branch
-git merge branch_name_to_merge_with //merge to branches 
+git merge branch_name_to_merge_with //merge two branches 
 
 back to git 28/8/23
