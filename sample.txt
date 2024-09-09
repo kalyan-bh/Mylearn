@@ -20,7 +20,7 @@ git --help
 git pull   //pull the changes from remote repository.
 git remote add origin remote_repo_link
 git push  
-git push -u origin branch_name //used to push changes from local to remote repository. 
+git push -u origin branch_name/master //used to push changes from local to remote repository. 
 git fetch 
 
 git checkout #unique id of commit stage#  ---->// to go to the previous changes
@@ -35,4 +35,14 @@ git branch --all // to get all the branches list
 git checkout -d branch_name  //command to delete branch
 git merge branch_name_to_merge_with //merge two branches 
 
-back to git 28/8/23
+
+Easy way to push code to remote repository
+------------------------------------------
+0. first open cmd/command prompt in the folder in which your uploading files are there
+1. git init
+2. git add .
+3. git status
+4. git commit -m "comment"
+5. git remote add origin repository_link
+6. git push -u origin mater/any other branch name
+
